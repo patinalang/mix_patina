@@ -1,8 +1,11 @@
 # mix_patina
 
+[![Hex.pm](https://img.shields.io/hexpm/v/mix_patina.svg)](https://hex.pm/packages/mix_patina)
+[![Docs](https://img.shields.io/badge/hex-docs-blue.svg)](https://hexdocs.pm/mix_patina)
+
 Mix utilities to work with Patina code.
 
-To use Patina compiler, add the following to your `mix.exs`:
+To use the Patina compiler, add the following to your `mix.exs`:
 
 ```elixir
 def project do
@@ -34,13 +37,13 @@ Any other dependency will be resolved from `mix.exs`.
 
 ## Installation
 
-The package can be installed by through `mix archive.install hex mix_patina`,
-or adding `mix_patina` to your list of dependencies in `mix.exs`:
+The package can be installed as a Mix archive with
+`mix archive.install hex mix_patina`, or by adding `mix_patina` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:mix_patina, "~> 0.1.0"}
+    {:mix_patina, "~> 0.0.0"}
   ]
 end
 ```
@@ -55,3 +58,8 @@ $ mix patina.install
 
 It will install Patina into `~/.patina`, which is the default path where it's
 expected by Patina build tools. See `mix help patina.install` for details.
+
+## License
+
+Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or
+[MIT license](LICENSE-MIT).

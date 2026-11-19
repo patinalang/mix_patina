@@ -122,9 +122,9 @@ defmodule Mix.Tasks.Compile.Patina do
   defp clean_package(name) do
     dir = Path.join(incremental_dir(), name)
 
-    with {:ok, files} <- File.read(Path.join(dir, "files")) do
+    with {:ok, files} <- dir |> Path.join("files") |> File.read() do
       for file <- String.split(files, "\n", trim: true),
-          do: File.rm(Path.join(Mix.Project.compile_path(), file))
+          do: Mix.Project.compile_path() |> Path.join(file) |> File.rm()
     end
 
     File.rm_rf!(dir)

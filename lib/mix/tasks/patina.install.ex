@@ -1,10 +1,8 @@
 defmodule Mix.Tasks.Patina.Install do
-  use Mix.Task
+  @shortdoc "Installs Patina"
 
   @releases_url "https://github.com/patinalang/patina/releases/download"
   @default_version "nightly"
-
-  @shortdoc "Installs Patina"
 
   @moduledoc """
   Installs Patina into `~/.patina` (`%USERPROFILE%\\.patina` on Windows).
@@ -49,6 +47,8 @@ defmodule Mix.Tasks.Patina.Install do
 
   Both environment variables default to `#{@releases_url}`.
   """
+
+  use Mix.Task
 
   @switches [
     force: :boolean,
@@ -233,7 +233,7 @@ defmodule Mix.Tasks.Patina.Install do
   end
 
   defp target_triple do
-    arch = List.to_string(:erlang.system_info(:system_architecture))
+    arch = :erlang.system_info(:system_architecture) |> List.to_string()
 
     case String.split(arch, "-") do
       ["aarch64", "apple", "darwin" <> _ | _] ->

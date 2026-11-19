@@ -50,10 +50,10 @@ defmodule MixPatina.Package do
   end
 
   defp read_manifest(dir) do
-    with {:ok, %{package: %{name: name}, dependencies: deps}} <-
-           patina(:print, [[:package, :dependencies]], [], dir: dir) do
-      {:ok, %__MODULE__{name: name, dir: dir, deps: Enum.map(deps, & &1.name)}}
-    else
+    case patina(:print, [[:package, :dependencies]], [], dir: dir) do
+      {:ok, %{package: %{name: name}, dependencies: deps}} ->
+        {:ok, %__MODULE__{name: name, dir: dir, deps: Enum.map(deps, & &1.name)}}
+
       {:error, _diagnostics} = error ->
         Mix.shell().error(
           "== Error reading #{Path.relative_to_cwd(Path.join(dir, @manifest))} =="
