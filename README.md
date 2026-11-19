@@ -44,3 +44,14 @@ def deps do
   ]
 end
 ```
+
+## Installing Patina
+
+After installing `mix_patina`, Patina itself can be installed via a Mix task:
+
+```console
+$ mix patina.install
+```
+
+It will install Patina into `~/.patina`, which is the default path where it's
+expected by Patina build tools. See `mix help patina.install` for details.
